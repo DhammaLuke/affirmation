@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 // #######################__Create Connection__##############################
 
 
-const dbConnection = new Sequelize('app_data', '', '', {
+const dbConnection = new Sequelize('app_data', 'lukegolden', '', {
   host: 'localhost',
   dialect: 'postgres',
   port: 5432,
@@ -22,9 +22,9 @@ const Post = dbConnection.define('post', {
   id: { type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true },
   title: { type: Sequelize.STRING(70), validate: { notEmpty: true } },
   message: { type: Sequelize.TEXT, validate: { notEmpty: true } },
-  sentiment: { type: Sequelize.INTEGER, validate: { notNull: true } },
-  flag: { type: Sequelize.INTEGER, validate: { notNull: true } },
-  anon: { type: Sequelize.BOOLEAN, validate: { notNull: true } },
+  sentiment: { type: Sequelize.INTEGER, allowNull: false },
+  flag: { type: Sequelize.INTEGER, allowNull: false },
+  anon: { type: Sequelize.BOOLEAN, allowNull: false },
 });
 
 // #######################__Define Associations__##############################
@@ -37,6 +37,6 @@ dbConnection.sync();
 
 module.exports = {
   connection: dbConnection,
-  user: User,
-  post: Post,
+  User: User,
+  Post: Post,
 };

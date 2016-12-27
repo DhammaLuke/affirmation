@@ -1,4 +1,5 @@
 /* eslint consistent-return:0 */
+const postController = require('./api/post/postController');
 
 const express = require('express');
 const logger = require('./logger');
@@ -11,7 +12,16 @@ const resolve = require('path').resolve;
 const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-// app.use('/api', myApi);
+const bodyParser = require('body-parser');
+const router = express.Router();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+router.route('/post')
+  .post(postController.addAPost);
+
+app.use('/api', router);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
