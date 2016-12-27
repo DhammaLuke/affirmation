@@ -1,6 +1,6 @@
 /* eslint consistent-return:0 */
 const postController = require('./api/post/postController');
-
+const userController = require('./api/user/userController');
 const express = require('express');
 const logger = require('./logger');
 
@@ -13,13 +13,27 @@ const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const router = express.Router();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-router.route('/post')
-  .post(postController.addAPost);
+app.use(cors());
+app.options('*', cors());
+app.delete('*', cors());
+
+router.route('/posts')
+  .post(postController.addAPost)
+  .get(postController.getAllPosts)
+  .put(postController.updateAPost)
+  .delete(postController.deleteAPost);
+
+router.route('/users')
+  .post(userController.addAUser)
+  .get(userController.getAllUsers)
+  .put(userController.updateAUser)
+  .delete(userController.deleteAUser);
 
 app.use('/api', router);
 
