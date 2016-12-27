@@ -37,6 +37,6 @@ dbConnection.sync();
 
 module.exports = {
   connection: dbConnection,
-  User: User,
-  Post: Post,
+  User,
+  Post,
 };
