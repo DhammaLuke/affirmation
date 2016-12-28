@@ -11,14 +11,18 @@
 
 import React from 'react';
 import Nav from '../../components/Nav/index';
-import CreatePost from '../../components/CreatePost/index';
+// import CreatePost from '../../components/CreatePost/index';
+import Phase from '../../components/Phase/index';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <Nav />
-        <CreatePost />
+        <Phase />
+        <Phase />
+        <Phase />
+        <Phase />
       </div>
     );
   }
