@@ -182,6 +182,7 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-polyfill": "6.16.0",
     "body-parser": "^1.15.2",
     "chalk": "1.1.3",
