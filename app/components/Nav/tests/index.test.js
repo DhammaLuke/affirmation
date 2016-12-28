@@ -1,10 +1,10 @@
-// import Button from '../index';
+// import Nav from '../index';
 
 import expect from 'expect';
 // import { shallow } from 'enzyme';
 // import React from 'react';
 
-describe('<Button />', () => {
+describe('<Nav />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
