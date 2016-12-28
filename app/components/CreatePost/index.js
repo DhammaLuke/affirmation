@@ -10,6 +10,18 @@ import Toggle from 'material-ui/Toggle';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
+import { validatePostFields, validatePostFieldsSuccess, validatePostFieldsFailure } from '../../containers/Post/actions';
+import { createPost, createPostSuccess, createPostFailure, resetNewPost } from '../../containers/Post/actions';
+
+const validateAndCreatePost = (values, dispatch) => {
+  return dispatch(createPost(values))
+    .then(result => {
+      if (result.payload.response && result.payload.response.status !== 200) {
+        dispatch(createPostFailure(result.payload.response.data));
+      }
+      dispatch(createPostSuccess(result.payload.data));
+    });
+}
 
 class CreatePost extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -18,6 +30,7 @@ class CreatePost extends React.Component { // eslint-disable-line react/prefer-s
     };
   }
   render() {
+    const {handleSubmit, submitting, newPost} = this.props;
     const paperStyle = {
       height: 600,
       width: 600,
@@ -35,33 +48,35 @@ class CreatePost extends React.Component { // eslint-disable-line react/prefer-s
         <div style={center}>
           <div>
             <Paper style={paperStyle} zDepth={4}>
-              <div style={{ margin: 20 }}>
-                <TextField
-                  type="text"
-                  hintText="This is a example title"
-                  floatingLabelText="Please input a title for your affirmation"
-                  fullWidth={true}
-                /><br />
-                <TextField
-                  hintText="ex. This is the best advice you will ever receive!"
-                  floatingLabelText="Please spread your knowledge and experience to our community. :D"
-                  fullWidth={true}
-                  multiLine={true}
-                  rows={8}
-                />
-                <Toggle
-                  label="Anonymous?"
-                />
-                <div style={center}>
-                  <RaisedButton
-                    label="Submit Affirmation"
-                    labelPosition="before"
-                    primary={true}
-                    icon={<AddCircleOutline />}
-                    Link to={'/'}
+              <form onSubmit={handleSubmit(validateAndCreatePost)}>
+                <div style={{margin: 20}}>
+                  <TextField
+                    type="text"
+                    hintText="This is a example title"
+                    floatingLabelText="Please input a title for your affirmation"
+                    fullWidth={true}
+                  /><br />
+                  <TextField
+                    hintText="ex. This is the best advice you will ever receive!"
+                    floatingLabelText="Please spread your knowledge and experience to our community. :D"
+                    fullWidth={true}
+                    multiLine={true}
+                    rows={8}
                   />
+                  <Toggle
+                    label="Anonymous?"
+                  />
+                  <div style={center}>
+                    <RaisedButton
+                      label="Submit Affirmation"
+                      labelPosition="before"
+                      primary={true}
+                      icon={<AddCircleOutline />}
+                      Link to={'/'}
+                    />
+                  </div>
                 </div>
-              </div>
+              </form>
             </ Paper>
           </div>
         </div>
