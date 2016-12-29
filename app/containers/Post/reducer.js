@@ -17,7 +17,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  newPost: { posts: null, error: null, loading: false }
+  newPost: { post: null, error: null, loading: false }
 });
 
 function postReducer(state = initialState, action) {
@@ -32,9 +32,23 @@ function postReducer(state = initialState, action) {
       return {...state, newPost: { post: null, error: error, loading: false, }};
     case RESET_NEW_POST:
       return {...state, newPost: { post: null, error: null, loading: false, }};
+    case VALIDATE_POST_FIELDS:
+      return {...state, newPost: { ...state.newPost, error: null, loading: true, }};
+    case VALIDATE_POST_FIELDS_SUCCESS:
+      return {...state, newPost: { ...state.newPost, error: null, loading: false, }};
+    case VALIDATE_POST_FIELDS_FAILURE:
+      let result = action.payload;
+      if (!result) {
+        error = { message: action.payload.message, };
+      } else {
+        error = { title: result.title, message: result.message, anon: result.anon, };
+      }
+      return {...state, newPost: { ...state.newPost, error: error, loading: false, }};
+    case RESET_POST_FIELDS:
+      return {...state, newPost: { ...state.newPost, error: null, loading: null, }};
     default:
       return state;
   }
-}
+};
 
 export default postReducer;

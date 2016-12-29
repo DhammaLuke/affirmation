@@ -53,3 +53,31 @@ export function resetNewPost() {
   };
 }
 
+export function validatePostFields(props) {
+  //note: we cant have /posts/validateFields because it'll match /posts/:id path!
+  const request = axios.post(`${ROOT_URL}/posts/validate/fields`, props);
+
+  return {
+    type: VALIDATE_POST_FIELDS,
+    payload: request
+  };
+}
+
+export function validatePostFieldsSuccess() {
+  return {
+    type: VALIDATE_POST_FIELDS_SUCCESS
+  };
+}
+
+export function validatePostFieldsFailure(error) {
+  return {
+    type: VALIDATE_POST_FIELDS_FAILURE,
+    payload: error
+  };
+}
+
+export function resetPostFields() {
+  return {
+    type: RESET_POST_FIELDS
+  }
+};
