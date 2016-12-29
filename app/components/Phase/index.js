@@ -8,7 +8,7 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import { Link } from 'react-router';
 
 class Phase extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -37,18 +37,20 @@ class Phase extends React.Component { // eslint-disable-line react/prefer-statel
               <p>Code. Code. Code. Code. Code. Code.
                 Code. Code. Code. Code. Code. Code.
               </p>
-              <FlatButton
-                label="Read More"
-                primary={true}
-                Link to={'/'}
-              />
+              <Link to="/">
+                <FlatButton
+                  label="Read More"
+                  primary={true}
+                />
+              </Link>
             </div>
             <div style={center}>
-              <RaisedButton
-                label="View All Affirmations"
-                primary={true}
-                Link to={'/'}
-              />
+              <Link to="/">
+                <RaisedButton
+                  label="View All Affirmations"
+                  primary={true}
+                />
+              </Link>
             </div>
           </div>
         </ Paper>
