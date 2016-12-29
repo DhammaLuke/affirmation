@@ -24,7 +24,7 @@ export class Post extends React.PureComponent { // eslint-disable-line react/pre
           />
         </div>
         <div>
-          <CreatePost/>
+          <CreatePost />
         </div>
       </div>
     );
@@ -36,10 +36,9 @@ const mapStateToProps = selectPost();
 function mapDispatchToProps(dispatch) {
   return {
     resetMe: () => {
-      dispatch(resetNewPost())
-    }
+      dispatch(resetNewPost());
+    },
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);
-
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

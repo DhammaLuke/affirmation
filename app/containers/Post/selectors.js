@@ -9,8 +9,6 @@ const selectPostDomain = () => (state) => state.get('post');
  * Other specific selectors
  */
 
-
-
 /**
  * Default selector used by Post
  */
