@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 // #######################__Create Connection__##############################
 
 
-const dbConnection = new Sequelize('app_data', 'lukegolden', '', {
+const dbConnection = new Sequelize('app_data', 'enduser', '', {
   host: 'localhost',
   dialect: 'postgres',
   port: 5432,

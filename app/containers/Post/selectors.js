@@ -10,6 +10,7 @@ const selectPostDomain = () => (state) => state.get('post');
  */
 
 
+
 /**
  * Default selector used by Post
  */
