@@ -23,9 +23,12 @@ app.use(cors());
 app.options('*', cors());
 app.delete('*', cors());
 
-router.route('/posts')
+router.route('/posts/:phase/')
   .post(postController.addAPost)
-  .get(postController.getAllPosts)
+  .get(postController.getAllPosts);
+
+router.route('/posts/:phase/:id')
+  .get(postController.getAPost)
   .put(postController.updateAPost)
   .delete(postController.deleteAPost);
 
