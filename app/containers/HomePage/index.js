@@ -10,14 +10,12 @@
  */
 
 import React from 'react';
-import Dashboard from '../Dashboard/index';
-import 
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <Dashboard />
+        <h1>Affirmation.io</h1>
       </div>
     );
   }
