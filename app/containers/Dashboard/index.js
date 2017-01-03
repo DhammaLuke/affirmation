@@ -8,6 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import selectDashboard from './selectors';
+import Phase from '../../components/Phase/index';
 
 export class Dashboard extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -19,6 +20,10 @@ export class Dashboard extends React.PureComponent { // eslint-disable-line reac
             { name: 'description', content: 'Description of Dashboard' },
           ]}
         />
+        <Phase />
+        <Phase />
+        <Phase />
+        <Phase />
       </div>
     );
   }
