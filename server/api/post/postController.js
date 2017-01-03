@@ -3,6 +3,7 @@ const Models = require('../../../database/database-config');
 module.exports = {
   addAPost: (req, res) => {
     Models.Post.build({
+      phase: req.body.phase,
       title: req.body.title,
       message: req.body.message,
       sentiment: 0,
@@ -16,8 +17,21 @@ module.exports = {
       res.status(404).send(error);
     });
   },
+  getAPost: (req, res) => {
+    Models.Post.findById(req.params.id)
+      .then((post) => {
+        res.status(200).json(post);
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  },
   getAllPosts: (req, res) => {
-    Models.Post.findAll({})
+    Models.Post.findAll({
+      where: {
+        phase: req.params.phase,
+      },
+    })
     .then((posts) => {
       res.status(200).json(posts);
     })
