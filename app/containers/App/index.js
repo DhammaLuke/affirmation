@@ -13,6 +13,7 @@
 
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Nav from '../../components/Nav/index';
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -24,6 +25,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     return (
       <MuiThemeProvider>
         <div>
+          <Nav />
           {React.Children.toArray(this.props.children)}
         </div>
       </MuiThemeProvider>

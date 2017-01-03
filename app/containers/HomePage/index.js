@@ -10,19 +10,14 @@
  */
 
 import React from 'react';
-import Nav from '../../components/Nav/index';
-// import CreatePost from '../../components/CreatePost/index';
-import Phase from '../../components/Phase/index';
+import Dashboard from '../Dashboard/index';
+import 
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <Nav />
-        <Phase />
-        <Phase />
-        <Phase />
-        <Phase />
+        <Dashboard />
       </div>
     );
   }
