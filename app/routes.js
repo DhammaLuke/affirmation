@@ -94,6 +94,86 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/learningtocode',
+      name: 'learningToCode',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/LearningToCode/reducer'),
+          System.import('containers/LearningToCode/sagas'),
+          System.import('containers/LearningToCode'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('learningToCode', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/wanttolearn',
+      name: 'wantToLearn',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/WantToLearn/reducer'),
+          System.import('containers/WantToLearn/sagas'),
+          System.import('containers/WantToLearn'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('wantToLearn', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/onthejob',
+      name: 'onTheJob',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/OnTheJob/reducer'),
+          System.import('containers/OnTheJob/sagas'),
+          System.import('containers/OnTheJob'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('onTheJob', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/jobhunt',
+      name: 'jobHunt',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/JobHunt/reducer'),
+          System.import('containers/JobHunt/sagas'),
+          System.import('containers/JobHunt'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('jobHunt', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
